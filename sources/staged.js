@@ -9,7 +9,7 @@ module.exports = function (options) {
 		if (err) { return stream.emit('error', err); }
 
 		results.forEach(function (file) {
-            fs.src(file.filename).pipe(stream);
+            fs.src(file.filename, options).pipe(stream);
 		});
 	});
 
