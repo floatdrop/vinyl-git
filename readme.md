@@ -4,7 +4,7 @@ Get files as Vinyl File objects from git.
 
 ## Why
 
-Use it with [`husky`](https://github.com/typicode/husky). There are plenty project, which is in terrible state, because of lacking of linting in development process. To get linting in such kind of project and not be overwhelmed with linting errors from legacy code `vinyl-git` was created.
+Use it with [`husky`](https://github.com/typicode/husky). There are plenty projects, that are in terrible state, because of lacking of linting in development process. To get linting (and codestyle checks) in such kind of project and not be overwhelmed with linting errors from legacy code `vinyl-git` was created.
 
 Just replace `gulp.src` with `git.staged` and run linting on only files, that are prepeared for commiting (just do not forget to add precommit hook with, [`husky`](https://github.com/typicode/husky)).
 
