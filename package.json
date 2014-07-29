@@ -1,6 +1,6 @@
 {
   "name": "vinyl-git",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Vinyl adapter for the git",
   "main": "index.js",
   "scripts": {
