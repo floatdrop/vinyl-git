@@ -1,21 +1,38 @@
-/* global describe, it, beforeEach */
+/* global describe, it, beforeEach, afterEach */
 
-var git = require('gift');
 var path = require('path');
+var fs = require('fs');
 var repoPath = path.join(__dirname, '/repo');
+var utils = require('./utils.js');
+var vinylGit = require('..');
+require('should');
 
 describe('staged', function () {
     var repo;
+    var cwd = process.cwd();
     beforeEach(function (done) {
-        git.init(repoPath, true, function (err, _repo) {
+        utils.freshGit(repoPath, function (err, _repo) {
+            if (err) { return done(err); }
+            process.chdir(repoPath);
             repo = _repo;
-            done(err);
+            done();
         });
     });
 
+    afterEach(function () {
+        process.cwd(cwd);
+    });
+
     it('should emit staged files', function (done) {
-        repo.add('staged.js', function () {
-            done();
+        fs.openSync(path.join(repoPath, 'test.file'), 'w');
+        repo.add('test.file', function (err) {
+            if (err) { done(err); }
+            vinylGit.staged()
+                .on('error', done)
+                .on('data', function (file) {
+                    file.relative.should.eql('test.file');
+                    done();
+                });
         });
     });
 });
