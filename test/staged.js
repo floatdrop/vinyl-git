@@ -1,11 +1,13 @@
 /* global describe, it, beforeEach */
 
 var git = require('gift');
+var path = require('path');
+var repoPath = path.joins(__dirname, '/repo');
 
 describe('staged', function () {
     var repo;
     beforeEach(function (done) {
-        git.init('./', function (err, _repo) {
+        git.init(repoPath, true, function (err, _repo) {
             repo = _repo;
             done(err);
         });
