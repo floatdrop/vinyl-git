@@ -1,16 +1,16 @@
 {
   "name": "vinyl-git",
   "version": "0.0.3",
-  "description": "Get staged file as Vinyl File objects",
+  "description": "Vinyl adapter for the git",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -R spec"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/floatdrop/vinyl-git.git"
   },
-  "author": "",
+  "author": "Vsevolod Strukchinsky <floatdrop@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/floatdrop/vinyl-git/issues"
@@ -18,8 +18,13 @@
   "homepage": "https://github.com/floatdrop/vinyl-git",
   "dependencies": {
     "staged-git-files": "0.0.2",
-    "strip-bom": "^0.3.1",
     "through2": "^0.5.1",
-    "vinyl": "^0.3.0"
+    "vinyl-fs": "^0.3.4"
+  },
+  "devDependencies": {
+    "bluebird": "^2.2.2",
+    "gift": "^0.4.2",
+    "mocha": "^1.21.3",
+    "should": "^4.0.4"
   }
 }
