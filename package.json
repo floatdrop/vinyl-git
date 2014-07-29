@@ -1,0 +1,23 @@
+{
+  "name": "vinyl-git",
+  "version": "0.0.0",
+  "description": "Get staged file as Vinyl File objects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/floatdrop/vinyl-git.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/floatdrop/vinyl-git/issues"
+  },
+  "homepage": "https://github.com/floatdrop/vinyl-git",
+  "dependencies": {
+    "staged-git-files": "0.0.2",
+    "vinyl": "^0.3.0"
+  }
+}
