@@ -27,7 +27,9 @@ git.staged()
 
 ## API
 
+### staged([options])
 
+Returns stream with currently staged files. Options are same as in [`vinyl-fs` src method](https://github.com/wearefractal/vinyl-fs#srcglobs-opt).
 
 # License
 
