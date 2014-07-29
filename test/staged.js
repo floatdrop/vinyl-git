@@ -2,7 +2,7 @@
 
 var git = require('gift');
 var path = require('path');
-var repoPath = path.joins(__dirname, '/repo');
+var repoPath = path.join(__dirname, '/repo');
 
 describe('staged', function () {
     var repo;
