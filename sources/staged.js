@@ -10,9 +10,15 @@ module.exports = function (options) {
     sgf(function(err, results) {
         if (err) { return stream.emit('error', err); }
 
-        fs.src(results.map(function (file) {
+        var files = results.map(function (file) {
             return file.filename;
-        }), options).pipe(stream);
+        });
+
+        if (files.length === 0) {
+            return stream.end();
+        }
+
+        fs.src(files, options).pipe(stream);
     });
 
     return stream;

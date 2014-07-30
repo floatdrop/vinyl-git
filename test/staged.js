@@ -23,6 +23,15 @@ describe('staged', function () {
         process.cwd(cwd);
     });
 
+    it('should emit end without staged files', function (done) {
+        vinylGit.staged()
+            .on('error', done)
+            .on('end', function () {
+                done();
+            })
+            .on('data', done);
+    });
+
     it('should emit staged files', function (done) {
         fs.openSync(path.join(repoPath, 'first.file'), 'w');
         fs.openSync(path.join(repoPath, 'second.file'), 'w');
