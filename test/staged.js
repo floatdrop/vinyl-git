@@ -24,15 +24,23 @@ describe('staged', function () {
     });
 
     it('should emit staged files', function (done) {
-        fs.openSync(path.join(repoPath, 'test.file'), 'w');
-        repo.add('test.file', function (err) {
-            if (err) { done(err); }
-            vinylGit.staged()
-                .on('error', done)
-                .on('data', function (file) {
-                    file.relative.should.eql('test.file');
-                    done();
-                });
+        fs.openSync(path.join(repoPath, 'first.file'), 'w');
+        fs.openSync(path.join(repoPath, 'second.file'), 'w');
+        repo.add('first.file', function (err) {
+            if (err) { return done(err); }
+            repo.add('second.file', function (err) {
+                if (err) { return done(err); }
+                var files = [];
+                vinylGit.staged()
+                    .on('error', done)
+                    .on('end', function () {
+                        files.should.have.length(2);
+                        done();
+                    })
+                    .on('data', function (file) {
+                        files.push(file.relative);
+                    });
+            });
         });
     });
 });
