@@ -3,17 +3,17 @@ var through = require('through2');
 var sgf = require('staged-git-files');
 
 module.exports = function (options) {
-	var stream = through.obj();
+    var stream = through.obj();
 
     sgf.cwd = process.cwd();
 
-	sgf(function(err, results) {
-		if (err) { return stream.emit('error', err); }
+    sgf(function(err, results) {
+        if (err) { return stream.emit('error', err); }
 
-		fs.src(results.map(function (file) {
+        fs.src(results.map(function (file) {
             return file.filename;
-		}), options).pipe(stream);
-	});
+        }), options).pipe(stream);
+    });
 
-	return stream;
+    return stream;
 };
